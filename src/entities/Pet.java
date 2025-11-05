@@ -79,10 +79,6 @@ public class Pet {
         this.status = true;
     }
 
-    public String exibirInfo() {
-        return  toString();
-    }
-
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("ID: ").append(id).append("\n");
@@ -97,15 +93,8 @@ public class Pet {
         return sb.toString();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Pet pet = (Pet) o;
-        return Objects.equals(id, pet.id);
+    public String exibirInfo() {
+        return  toString();
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
 }
