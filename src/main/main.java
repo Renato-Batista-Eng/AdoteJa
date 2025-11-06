@@ -25,8 +25,9 @@ public class main {
                 1. Para se cadastrar como adotante.
                 2. Mostrar adotante cadastrados.
                 3. Cadastrar um pet.
-                4. Mostrar pets cadastrados.
+                4. Mostrar pets disponíveis para adoção.
                 5. Adotar um pet.
+                6. Mostrar pets cadastrados.
                 0. Para sair.
                 """);
 
@@ -38,7 +39,7 @@ public class main {
 
             switch (opcao) {
                 case 1:
-                    System.out.print("Digite seu nome completo: ");
+                    System.out.print("\nDigite seu nome completo: ");
                     String adotanteNome = scan.nextLine();
                     System.out.print("Digite seu cpf: ");
                     String cpf = scan.next();
@@ -64,11 +65,11 @@ public class main {
 
                 case 2:
                     if(adotanteService.getAdotanteList().size() == 0) {
-                        System.out.println("Nenhum adotante cadastrado até o momento");
+                        System.out.println("\nNenhum adotante cadastrado até o momento");
                         break;
                     }
 
-                    System.out.println("Lista de adotantes cadastrados\n--------------------");
+                    System.out.println("\nLista de adotantes cadastrados\n--------------------");
                     for(Adotante a : adotanteService.getAdotanteList()) {
                         System.out.println(a.exibirInfo());
                         System.out.println("--------------------------------");
@@ -76,7 +77,7 @@ public class main {
                     break;
 
                 case 3:
-                    System.out.print("Digite o nome do pet: ");
+                    System.out.print("\nDigite o nome do pet: ");
                     String petNome = scan.nextLine();
                     System.out.print("Digite sua espécie do pet: ");
                     String petEspecie = scan.nextLine();
@@ -89,30 +90,47 @@ public class main {
                     break;
 
                 case 4:
-                    if(abrigo.getPetList().size() == 0) {
-                        System.out.println("Não temos nenhum pet cadastrado no momento");
+                    if(abrigo.getPetsDisponiveis().size() == 0) {
+                        System.out.println("\nNenhum pet disponível para adoção no momento");
                     } else {
-                        System.out.println("Lista de pets disponíveis para adoção\n--------------------");
-                        for(Pet p : abrigo.getPetList()) {
+                        System.out.println("\nLista de pets disponíveis para adoção\n--------------------");
+                        for(Pet p : abrigo.getPetsDisponiveis()) {
                             System.out.println(p.exibirInfo());
-                            System.out.println("--------------------------------");
+                            System.out.print("--------------------------------");
                         }
                     }
                     break;
 
                 case 5:
-                    if(abrigo.getPetList().isEmpty()) {
-                        System.out.println("Nenhum pet disponivel para adoção no momento");
+                    if(abrigo.getPetsDisponiveis().size() == 0) {
+                        System.out.println("\nNenhum pet disponivel para adoção no momento");
                         break;
                     }
 
-                    System.out.print("Digite o id do adotante: ");
+                    System.out.print("\nDigite o id do adotante: ");
                     Long adotanteId = scan.nextLong();
 
                     System.out.print("Agora digite o id do pet que deseja adotar: ");
                     Long petId = scan.nextLong();
 
                     adocao.adotarPet(adotanteId, petId);
+                    break;
+
+                case 6:
+                    if(abrigo.getPetsList().size() == 0) {
+                        System.out.println("\nNenhum pet cadastrado no momento");
+                    } else {
+                        System.out.println("\nLista de pets cadastrados no abrigo\n--------------------");
+                        for(Pet p : abrigo.getPetsList()) {
+                            System.out.println(p.exibirInfo());
+                            System.out.print("--------------------------------");
+                        }
+                    }
+                    break;
+
+                default:
+                    System.out.println("\nOpção inválida. Tente novamente!");
+                    break;
 
             }
 
@@ -124,8 +142,8 @@ public class main {
                 3. Cadastrar um pet.
                 4. Mostrar pets disponíveis para adoção.
                 5. Adotar um pet.
+                6. Mostrar pets cadastrados.
                 0. Para sair.
-                
                 """);
 
             System.out.print("O que deseja fazer? ");

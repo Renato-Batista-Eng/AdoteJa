@@ -15,16 +15,15 @@ public class Adocao {
 
     Adotante adotante = new Adotante();
     Pet pet = new Pet();
-
     public void adotarPet(Long adotanteId, Long petId) {
         adotante = adotanteService.buscarAdotantePorId(adotanteId);
         pet = abrigo.buscarPetPorId(petId);
         if(adotante != null && pet != null){
             adotante.addPet(pet);
             pet.setAdotante(adotante);
-            abrigo.getPetList().remove(pet);
+            abrigo.getPetsDisponiveis().remove(pet);
             System.out.println("Adoção realizada com sucesso");
-            gerarComprovante();
+            System.out.println(gerarComprovante());
         } else {
             System.out.println("Dados inválidos, verifique os IDs digitados e tente novamente!");
         }
@@ -35,8 +34,8 @@ public class Adocao {
         StringBuilder sb = new StringBuilder();
         sb.append("Comprovante gerado").append("\n\n");
         sb.append(adotante.exibirInfo());
-        sb.append(pet.exibirInfo());
         return sb.toString();
     }
 
 }
+
