@@ -84,12 +84,12 @@ public class AdotanteService {
                     break;
 
                 default:
-                    System.out.println("Dado inválido!");
+                    System.out.println("\nDado inválido!");
                     break;
             }
 
         } else {
-            System.out.println("Adotante não encontrado no banco de dados!");
+            System.out.println("\nAdotante não encontrado no banco de dados!");
         }
 
     }
