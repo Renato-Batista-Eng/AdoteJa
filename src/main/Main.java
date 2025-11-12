@@ -9,7 +9,7 @@ import services.AdotanteService;
 
 import java.util.Scanner;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
 
@@ -28,6 +28,9 @@ public class main {
                 4. Mostrar pets disponíveis para adoção.
                 5. Adotar um pet.
                 6. Mostrar pets cadastrados.
+                7. Editar informações de pet.
+                8. Editar informações de adotante.
+                9. Excluir adotante.
                 0. Para sair.
                 """);
 
@@ -128,6 +131,43 @@ public class main {
                     }
                     break;
 
+                case 7:
+                    if(abrigo.getPetsList().size() == 0) {
+                        System.out.println("\nNenhum pet cadastrado no momento");
+                    } else {
+                        abrigo.atualizarPet();
+                    }
+                    break;
+
+                case 8:
+                    if(adotanteService.getAdotanteList().size() == 0) {
+                        System.out.println("\nNenhum adotante cadastrado até o momento");
+                    } else {
+                        adotanteService.atualizarAdotante();
+                    }
+                    break;
+
+                case 9:
+                    if(adotanteService.getAdotanteList().size() == 0) {
+                        System.out.println("\nNenhum adotante cadastrado até o momento");
+                    } else {
+                        System.out.print("Digite o ID do adotante: ");
+                        adotanteId = scan.nextLong();
+
+                        adotante = adotanteService.buscarAdotantePorId(adotanteId);
+                        if(adotante != null) {
+                            if(adotante.getPets().size() != 0) {
+                                System.out.println("Nossos termos de segurança não permite remover um adotante que já tenha adotado um pet.");
+                            } else {
+                                adotanteService.getAdotanteList().remove(adotante);
+                                System.out.println("Adotante removido com sucesso!");
+                            }
+                        } else {
+                            System.out.println("Adontate não encontrado no banco de dados.");
+                        }
+                    }
+                    break;
+
                 default:
                     System.out.println("\nOpção inválida. Tente novamente!");
                     break;
@@ -143,6 +183,9 @@ public class main {
                 4. Mostrar pets disponíveis para adoção.
                 5. Adotar um pet.
                 6. Mostrar pets cadastrados.
+                7. Editar informações de pet.
+                8. Editar informações de adotante.
+                9. Excluir adotante.
                 0. Para sair.
                 """);
 

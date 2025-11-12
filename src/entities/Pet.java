@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.Objects;
-
 public class Pet {
 
     private static Long ID = 1L;
@@ -83,7 +81,7 @@ public class Pet {
         StringBuilder sb = new StringBuilder();
         sb.append("ID: ").append(id).append("\n");
         sb.append("Nome: ").append(nome).append("\n");
-        sb.append("Espécife: ").append(especie).append("\n");
+        sb.append("Espécie: ").append(especie).append("\n");
         sb.append("Idade: ").append(idade).append("\n");
         sb.append("Sexo: ").append(sexo).append("\n");
 

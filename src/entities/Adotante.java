@@ -79,7 +79,7 @@ public class Adotante {
         sb.append("Nome: ").append(nome).append("\n");
         sb.append("CPF: ").append(cpf).append("\n");
         sb.append("Telefone: ").append(telefone).append("\n");
-        sb.append("Endereço: ").append(endereco).append("\n");
+        sb.append("----- Endereço ----- \n").append(endereco).append("\n");
 
         String pet = (getPets().size() == 0) ? "Nenhum pet adotado" : getPets().toString();
         sb.append("Pet: ").append(pet).append("\n");
