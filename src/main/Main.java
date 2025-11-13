@@ -193,7 +193,7 @@ public class Main {
             opcao = scan.nextInt();
             scan.nextLine();
         }
-
+    scan.close();
     }
 
 }
