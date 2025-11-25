@@ -1,5 +1,6 @@
 package services;
 
+import entities.Animal;
 import entities.Pet;
 
 import java.util.ArrayList;
@@ -11,25 +12,25 @@ public class Abrigo {
     Scanner scan = new Scanner(System.in);
 
     private List<Pet> petsDisponiveis = new ArrayList<>();
-    private List<Pet> petsList = new ArrayList<>();
+    private List<Animal> animaisList = new ArrayList<>();
 
     public List<Pet> getPetsDisponiveis() {
         return petsDisponiveis;
     }
 
-    public List<Pet> getPetsList() {
-        return petsList;
+    public List<Animal> getAnimaisList() {
+        return animaisList;
     }
 
     public void registrarPet(Pet pet) {
         petsDisponiveis.add(pet);
-        petsList.add(pet);
+        animaisList.add(pet);
     }
 
     public Pet buscarPetPorId(Long petId) {
-        for(Pet pet : petsDisponiveis){
-            if(pet.getId().equals(petId)){
-                return pet;
+        for(Animal animal : animaisList){
+            if(animal.getId().equals(petId)){
+                return (Pet) animal;
             }
         }
         return null;

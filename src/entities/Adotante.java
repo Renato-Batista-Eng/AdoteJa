@@ -3,18 +3,68 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Adotante extends Pessoa {
+public class Adotante {
+
+    private static Long ID = 1L;
+
+    private Long id;
+    private String nome;
+    private String cpf;
+    private String telefone;
+    private Endereco endereco;
 
     private List<Pet> pets = new ArrayList<>();
 
-    public Adotante() {
-        super();
+    public Adotante(){
     }
 
     public Adotante(String nome, String cpf, String telefone, Endereco endereco) {
-        super(nome, cpf, telefone, endereco);
+        this.id = ID++;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 
     public List<Pet> getPets() {
         return pets;
@@ -24,11 +74,13 @@ public class Adotante extends Pessoa {
         pets.add(pet);
     }
 
-    @Override
     public String exibirInfo() {
         StringBuilder sb = new StringBuilder();
-
-        sb.append(super.exibirInfo());
+        sb.append("ID: ").append(id).append("\n");
+        sb.append("Nome: ").append(nome).append("\n");
+        sb.append("CPF: ").append(cpf).append("\n");
+        sb.append("Telefone: ").append(telefone).append("\n");
+        sb.append("----- Endereço ----- \n").append(endereco).append("\n");
         String pet = (getPets().size() == 0) ? "Nenhum pet adotado" : getPets().toString();
         sb.append("Pet: ").append(pet).append("\n");
 

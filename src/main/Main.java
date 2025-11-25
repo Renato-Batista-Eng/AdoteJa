@@ -1,6 +1,7 @@
 package main;
 
 import entities.Adotante;
+import entities.Animal;
 import entities.Endereco;
 import entities.Pet;
 import services.Abrigo;
@@ -120,19 +121,19 @@ public class Main {
                     break;
 
                 case 6:
-                    if(abrigo.getPetsList().size() == 0) {
+                    if(abrigo.getAnimaisList().size() == 0) {
                         System.out.println("\nNenhum pet cadastrado no momento");
                     } else {
                         System.out.println("\nLista de pets cadastrados no abrigo\n--------------------");
-                        for(Pet p : abrigo.getPetsList()) {
-                            System.out.println(p.exibirInfo());
+                        for(Animal animal : abrigo.getAnimaisList()) {
+                            System.out.println(animal.exibirInfo());
                             System.out.print("--------------------------------");
                         }
                     }
                     break;
 
                 case 7:
-                    if(abrigo.getPetsList().size() == 0) {
+                    if(abrigo.getAnimaisList().size() == 0) {
                         System.out.println("\nNenhum pet cadastrado no momento");
                     } else {
                         abrigo.atualizarPet();
